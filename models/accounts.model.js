@@ -1,3 +1,7 @@
+/*
+A simple model that allows the user to create account using only their user name.
+*/
+
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;

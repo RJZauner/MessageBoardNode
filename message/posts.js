@@ -1,14 +1,14 @@
 const router = require('express').Router();//using router() to create routes
 let Posts = require('../models/posts.model');
 
-//get request
+//get request for messages
 router.route('/').get((req, res) => {
   Posts.find()
     .then(posts=> res.json(posts))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//post request
+//posts messages to our database
 router.route('/add').post((req, res) => {
   const username = req.body.username;
   const title = req.body.title;
@@ -27,7 +27,7 @@ router.route('/add').post((req, res) => {
   .catch(err => res.status(400).json('Error: ' + err));
 });
 
-//fetches a specific posts
+//fetches a specific posts using the id
 router.route('/:id').get((req, res) => {
   Posts.findById(req.params.id)
     .then(posts => res.json(posts))
